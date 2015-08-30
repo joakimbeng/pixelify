@@ -1,0 +1,21 @@
+{
+  "name": "pixelify",
+  "version": "0.1.0",
+  "description": "Convert numbers in a JavaScript CSS declaration to pixel values, where it's appropriate",
+  "main": "src/index.js",
+  "scripts": {
+    "lint": "xo",
+    "pretest": "npm run -s lint",
+    "test": "tape 'test/**/*.js'"
+  },
+  "keywords": [],
+  "author": "Joakim Carlstein <joakim@klei.se>",
+  "repository": "joakimbeng/pixelify",
+  "license": "MIT",
+  "devDependencies": {
+    "tape": "^4.2.0",
+    "xo": "^0.7.1"
+  },
+  "dependencies": {
+  }
+}
