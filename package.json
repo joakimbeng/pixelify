@@ -1,6 +1,6 @@
 {
   "name": "pixelify",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Convert numbers in a JavaScript CSS declaration to pixel values, where it's appropriate",
   "main": "src/index.js",
   "scripts": {
@@ -16,6 +16,5 @@
     "tape": "^4.2.0",
     "xo": "^0.7.1"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
