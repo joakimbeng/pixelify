@@ -1,37 +1,35 @@
 'use strict';
+var NON_LETTERS = /[^a-z]/g;
 var EXCEPTIONS = [
-	'boxFlex',
-	'boxFlexGroup',
-	'columnCount',
-	'fillOpacity',
+	'boxflex',
+	'boxflexgroup',
+	'columncount',
+	'fillopacity',
 	'flex',
-	'flexGrow',
-	'flexPositive',
-	'flexShrink',
-	'flexNegative',
-	'fontWeight',
-	'lineClamp',
-	'lineHeight',
+	'flexgrow',
+	'flexpositive',
+	'flexshrink',
+	'flexnegative',
+	'fontweight',
+	'lineclamp',
+	'lineheight',
 	'opacity',
 	'order',
 	'orphans',
-	'strokeOpacity',
+	'strokeopacity',
 	'widows',
-	'zIndex',
+	'zindex',
 	'zoom'
 ];
 
-module.exports = pixelify;
+module.exports = function pixelify(value, property) {
+	property = unify(property);
+	if (typeof value === 'number' && value !== 0 && (!property || EXCEPTIONS.indexOf(property) === -1)) {
+		return value + 'px';
+	}
+	return value;
+};
 
-function pixelify(decl) {
-	return Object.keys(decl).reduce(function (obj, sel) {
-		if (typeof decl[sel] === 'number' && decl[sel] !== 0 && EXCEPTIONS.indexOf(sel) === -1) {
-			obj[sel] = decl[sel] + 'px';
-		} else if (typeof decl[sel] === 'object') {
-			obj[sel] = pixelify(decl[sel]);
-		} else {
-			obj[sel] = decl[sel];
-		}
-		return obj;
-	}, {});
+function unify(val) {
+	return val ? val.toLowerCase().replace(NON_LETTERS, '') : '';
 }

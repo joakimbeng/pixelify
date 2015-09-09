@@ -1,66 +1,35 @@
 'use strict';
-var test = require('tape');
+var test = require('ava');
 var pixelify = require('../src');
 
-test('pixelify appends "px" to numbers', function (assert) {
-	var decl = {
-		fontSize: 10
-	};
+test('non-zero without property', function (assert) {
+	var actual = pixelify(10);
+	var expected = '10px';
 
-	var actual = pixelify(decl);
-	var expected = {fontSize: '10px'};
-
-	assert.same(actual, expected);
+	assert.is(actual, expected);
 	assert.end();
 });
 
-test('pixelify does not touch zero values', function (assert) {
-	var decl = {
-		margin: 0
-	};
+test('zero value without property', function (assert) {
+	var actual = pixelify(0);
+	var expected = 0;
 
-	var actual = pixelify(decl);
-	var expected = {margin: 0};
-
-	assert.same(actual, expected);
+	assert.is(actual, expected);
 	assert.end();
 });
 
-test('pixelify does not touch excluded properties', function (assert) {
-	var decl = {
-		flex: 3
-	};
+test('string', function (assert) {
+	var actual = pixelify('20%');
+	var expected = '20%';
 
-	var actual = pixelify(decl);
-	var expected = {flex: 3};
-
-	assert.same(actual, expected);
+	assert.is(actual, expected);
 	assert.end();
 });
 
-test('pixelify handles nested declarations', function (assert) {
-	var decl = {
-		body: {
-			margin: 10
-		}
-	};
+test('non-zero with excluded property', function (assert) {
+	var actual = pixelify(1, 'box-flex');
+	var expected = 1;
 
-	var actual = pixelify(decl);
-	var expected = {body: {margin: '10px'}};
-
-	assert.same(actual, expected);
-	assert.end();
-});
-
-test('pixelify does not mutate the original declaration', function (assert) {
-	var decl = {
-		body: {
-			margin: 10
-		}
-	};
-
-	var actual = pixelify(decl);
-
-	assert.notSame(actual, decl);
+	assert.is(actual, expected);
 	assert.end();
 });

@@ -1,20 +1,24 @@
 {
   "name": "pixelify",
   "version": "1.0.0",
-  "description": "Convert numbers in a JavaScript CSS declaration to pixel values, where it's appropriate",
+  "description": "Append \"px\" to a number, if it's appropriate",
   "main": "src/index.js",
   "scripts": {
     "lint": "xo",
     "pretest": "npm run -s lint",
-    "test": "tape 'test/**/*.js'"
+    "test": "ava"
   },
-  "keywords": [],
+  "keywords": [
+    "css",
+    "pixel",
+    "append"
+  ],
   "author": "Joakim Carlstein <joakim@klei.se>",
   "repository": "joakimbeng/pixelify",
   "license": "MIT",
   "devDependencies": {
-    "tape": "^4.2.0",
-    "xo": "^0.7.1"
+    "ava": "^0.1.0",
+    "xo": "^0.8.0"
   },
   "dependencies": {}
 }

@@ -1,8 +1,8 @@
 # pixelify
 
-[![NPM version][npm-image]][npm-url] [![js-xo-style][codestyle-image]][codestyle-url]
+[![Build status][travis-image]][travis-url] [![NPM version][npm-image]][npm-url] [![js-xo-style][codestyle-image]][codestyle-url]
 
-> Convert numbers in a JavaScript CSS declaration to pixel values, where it's appropriate
+> Append "px" to a number, if it's appropriate
 
 ## Installation
 
@@ -19,46 +19,50 @@ npm install --save pixelify
 ```javascript
 var pixelify = require('pixelify');
 
-pixelify({
-  body: {
-    fontSize: 10,
-    margin: 0
-  }
-});
-// {body: {fontSize: '10px', margin: 0}}
+pixelify(5);
+// '5px'
+pixelify(1, 'opacity');
+// 1
+pixelify(0, 'margin');
+// 0
+pixelify(10, 'margin');
+// '10px'
 ```
 
 `pixelify` does not append `"px"` to zero values or properties in this list:
 
-* boxFlex
-* boxFlexGroup
-* columnCount
-* fillOpacity
+* box-flex
+* box-flex-group
+* column-count
+* fill-opacity
 * flex
-* flexGrow
-* flexPositive
-* flexShrink
-* flexNegative
-* fontWeight
-* lineClamp
-* lineHeight
+* flex-grow
+* flex-positive
+* flex-shrink
+* flex-negative
+* font-weight
+* line-clamp
+* line-height
 * opacity
 * order
 * orphans
-* strokeOpacity
+* stroke-opacity
 * widows
-* zIndex
+* z-index
 * zoom
+
+`pixelify` accepts a camel cased or dash cased property name.
 
 ## API
 
-### `pixelify(decl)`
+### `pixelify(value [, property])`
 
 | Name | Type | Description |
 |------|------|-------------|
-| decl | `Object` | The CSS declaration to pixelify |
+| value | `Mixed` | The CSS value to pixelify |
+| property | `String` | The name of the CSS property |
 
-Returns: `Object`, the pixelified declaration.
+Returns: `Mixed`, the pixelified value.
 
 ## License
 
@@ -66,5 +70,7 @@ MIT
 
 [npm-url]: https://npmjs.org/package/pixelify
 [npm-image]: https://badge.fury.io/js/pixelify.svg
+[travis-url]: https://travis-ci.org/joakimbeng/pixelify
+[travis-image]: https://travis-ci.org/joakimbeng/pixelify.svg?branch=master
 [codestyle-url]: https://github.com/sindresorhus/xo
 [codestyle-image]: https://img.shields.io/badge/code%20style-xo-brightgreen.svg?style=flat
