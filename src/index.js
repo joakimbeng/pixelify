@@ -1,12 +1,15 @@
 'use strict';
 var NON_LETTERS = /[^a-z]/g;
 var EXCEPTIONS = [
+	'animationiterationcount',
 	'boxflex',
 	'boxflexgroup',
+	'boxordinalgroup',
 	'columncount',
 	'fillopacity',
 	'flex',
 	'flexgrow',
+	'flexorder',
 	'flexpositive',
 	'flexshrink',
 	'flexnegative',
@@ -16,7 +19,9 @@ var EXCEPTIONS = [
 	'opacity',
 	'order',
 	'orphans',
+	'stopopacity',
 	'strokeopacity',
+	'tabsize',
 	'widows',
 	'zindex',
 	'zoom'
